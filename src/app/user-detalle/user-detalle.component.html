@@ -1,0 +1,23 @@
+<div>
+
+    <div class="row">
+        <div class="col-1"><button class="btn btn-outline-secondary" routerLink='users'><</button></div>
+        <div class="col-11">
+            <h1>Usuario: {{user.login}}</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col- 4">
+            <img src="{{user.avatar_url}}" alt="" style="height:200px; width: 200px;">
+        </div>
+        <div class="col- 8">
+            <div>ID: {{user.id}}</div>
+            <div>Nombre: {{user.name}}</div>
+            <div>Localidad: {{user.location}}</div>
+            <div>GIT: {{user.html_url}}</div>
+            <div><button class="btn btn-outline-danger">Delete</button></div>
+
+        </div>
+    </div>
+</div>
