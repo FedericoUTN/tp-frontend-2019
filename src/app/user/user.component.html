@@ -1,5 +1,10 @@
 <div>
     <h2>Lista de Usuarios</h2>
+    <form autocomplete="off" [formGroup]='formSearch' (ngSubmit)='search()' #f='ngForm'>
+        <label for="name" class="col-form-label">Search Box: </label>
+        <input type="text" id="name" class="form-control" placeholder="Ingrese un nombre..." formControlName='name' [(ngModel)]='name'>
+        <button type="submit" class="btn btn-primary">OK</button>
+    </form>
     <table class="table">
         <thead>
             <th>ID</th>

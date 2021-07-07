@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from './User';
 import { UserService } from './user.service';
@@ -9,20 +10,40 @@ import { UserService } from './user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  isNow: Boolean = false;
+  name = '';
   peopleList: Array<User> = [];
-  constructor(private userService: UserService, private router: Router) { }
+  peopleListAct: Array<User> = [];
+  formSearch: FormGroup;
+  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) { 
+    this.formSearch = this.formBuilder.group({
+      name: ['']
+    });
+    
+  }
 
   ngOnInit(): void {
+   this.actualizarUsers();
+  }
+  actualizarUsers(): void{
     this.userService.getUsers().subscribe((response: any[]) => {
-    this.peopleList = response;
-    console.log(this.peopleList);
-    console.log();
-    }
-    )
+      this.peopleList = response;
+      }
+      )
   }
   getUserDetail(login: string){
     this.router.navigate(['user/' + login])
   }
+  search(): void{
+    if(this.peopleList === this.peopleListAct){
+      this.actualizarUsers();
+    }
+    this.peopleListAct = this.peopleList.filter(word => word.login.includes(this.name));
+    this.peopleList = this.peopleListAct;
+
+    
+    
+  }
+
 
 }
