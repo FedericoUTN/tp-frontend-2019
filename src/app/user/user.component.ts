@@ -35,14 +35,12 @@ export class UserComponent implements OnInit {
     this.router.navigate(['user/' + login])
   }
   search(): void{
-    if(this.peopleList === this.peopleListAct){
-      this.actualizarUsers();
-    }
     this.peopleListAct = this.peopleList.filter(word => word.login.includes(this.name));
     this.peopleList = this.peopleListAct;
-
     
-    
+  }
+  update(): void{
+    this.actualizarUsers();
   }
 
 

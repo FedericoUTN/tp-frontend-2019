@@ -4,6 +4,7 @@
         <label for="name" class="col-form-label">Search Box: </label>
         <input type="text" id="name" class="form-control" placeholder="Ingrese un nombre..." formControlName='name' [(ngModel)]='name'>
         <button type="submit" class="btn btn-primary">OK</button>
+        <button type="button" class="btn btn-success ms-2" (click)='update()'>UPDATE ALL</button>
     </form>
     <table class="table">
         <thead>
@@ -23,6 +24,9 @@
                     </div>
                 </td>
             </tr>
+            <div *ngIf="peopleList.length === 0">
+                <div class="badge rounded-pill bg-danger">NO HAY CONICIDENCIA CON LA BUSQUEDA</div>
+            </div>
 
         </tbody>
     </table>
