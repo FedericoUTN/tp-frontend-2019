@@ -16,8 +16,45 @@
             <div>Nombre: {{user.name}}</div>
             <div>Localidad: {{user.location}}</div>
             <div>GIT: {{user.html_url}}</div>
-            <div><button class="btn btn-outline-danger">Delete</button></div>
+            <div class="row">
+                <button class="btn btn-outline-danger col">DELETE</button>
+                <button class="btn btn-outline-secondary col" (click)='editOn()'>EDIT</button>
+            </div>
 
         </div>
+    </div>
+    <div *ngIf="isEdit">
+        <form action="" [formGroup]='formUser' (ngSubmit)='save()' #f='ngForm'>
+            <div class="row">
+                <div class="col-2">
+                    <label for="inputNombre" class="form-label">Nombre: </label>
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="InputNombre" formControlName="nombre" [(ngModel)]="user.name" name="nombre">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <label for="inputLocalidad" class="form-label">Localidad: </label>
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="InputLocalidad" formControlName="localidad" [(ngModel)]="user.location" name="localidad">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <label for="inputGit" class="form-label">GIT: </label>
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="InputGit" formControlName="git" [(ngModel)]="user.html_url" name="git">
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-grid gap-2">
+                    <button type="submit " class="btn btn-primary">GUARDAR</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
