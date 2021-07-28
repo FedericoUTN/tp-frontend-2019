@@ -34,6 +34,11 @@ export class UserComponent implements OnInit {
   getUserDetail(login: string){
     this.router.navigate(['user/' + login])
   }
+
+  getEditUser(login: string){
+    this.router.navigate(['user/' + login])
+    this.userService.isEdit = true;
+  }
   search(): void{
     this.peopleListAct = this.peopleList.filter(word => word.login.includes(this.name));
     this.peopleList = this.peopleListAct;

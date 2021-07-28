@@ -25,12 +25,18 @@ formUser: FormGroup;
   ngOnInit(): void {
     this.route.params.subscribe( params => this.login = params.login);
     this.userService.getById(this.login).subscribe( (data: User) => this.user = data)
+    if(this.userService.isEdit === true){
+      this.isEdit = true;
+      this.userService.isEdit = false;
+    }
   }
   editOn(): void{
     this.isEdit = !this.isEdit;
   }
   save(): void{
-    
+    this.userService.editById(this.user).subscribe( (data: any) => {
+      console.log(data);
+    })
   }
   
 
